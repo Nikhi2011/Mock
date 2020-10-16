@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Sign Up</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-2"></div>        
+				<div class="col-8">
+					<div class="margin-tops p-4 background-image-inside">
+						<h3 class="mt-4">Signup</h3>
+						<form [formGroup] = "signupForm">
+							<div class ="alert alert-danger" *ngIf = "error == 'User already exist'">{{error}}</div>
+							<div class ="alert alert-danger" *ngIf = "!validate"> Password and Confirm password is not same</div>
+							<div class="row" >
+								<div class="col-md-6 col-sm-12">
+									<label for="userName">User Name</label> <input type="text"
+										class="form-control" id="userName" name="userName" formControlName ="userName"
+										placeholder="Enter Username" required minlength="3" maxlength="10" >
+								</div>
+							</div>
+								<div class="validation-font" *ngIf="(!signupForm.get('userName').valid) && (signupForm.get('userName').dirty)">User Name should contain atleast 3 characters</div>
+							
+							<div class="row">
+								<div class="col-md-6 col-sm-12">
+									<div>
+									<label for="firstName">First Name</label> <input type="text"
+										class="form-control" id="firstName" name="firstName" formControlName ="firstName"
+										placeholder="Enter Firstname" required minlength="3" maxlength="10">
+									</div>
+									<div class="validation-font" *ngIf="(!signupForm.get('firstName').valid) && (signupForm.get('firstName').dirty)">User Name should contain atleast 3 characters</div>	
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div>
+									<label for="lastName">Last Name</label> <input type="text"
+										class="form-control" id="lastName" name="lastName" formControlName ="lastName" 
+										placeholder="Enter Lastname" required minlength="3" maxlength="10">
+									</div>	
+									<div class ="validation-font" *ngIf="(!signupForm.get('lastName').valid) && (signupForm.get('lastName').dirty)">User Name should contain atleast 3 characters</div>
+								</div>		
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-sm-12">
+									<div>
+									<label for="password">Password</label> <input type="password"
+										class="form-control" id="password" name="password" formControlName ="password" 
+										placeholder="Enter Password" required minlength="3" maxlength="10" >
+									</div>	
+									<div class="validation-font" *ngIf="(!signupForm.get('password').valid) && (signupForm.get('password').dirty)">User Name should contain atleast 3 characters</div>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div>
+									<label for="confirmPassword">Confirm Password</label> <input
+										type="password" class="form-control" id="confirmPassword"
+										name="confirmPassword" formControlName ="confirmPassword" placeholder="Enter Confirm Password" required minlength="3" maxlength="10" >
+									</div>	
+									<div class="validation-font" *ngIf="(!signupForm.get('confirmPassword').valid) && (signupForm.get('confirmPassword').dirty)">User Name should contain atleast 3 characters</div>
+								</div>
+								
+								
+							</div>
+							<div class="row p-3">
+								<div class="col-3">
+									<button type="button" class="btn btn-danger" (click) = "addingUser(signupForm)" [disabled] = "!signupForm.valid">Signup</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav
+			class="navbar navbar-expand-md bg-danger navbar-dark fixed-bottom">
+			<a class="navbar-brand" href="#">Copyright 2019</a>
+		</nav>
+
+</body>
+</html>

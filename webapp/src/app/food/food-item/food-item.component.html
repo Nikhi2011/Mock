@@ -1,0 +1,41 @@
+<div *ngIf = "((userStatus() == 'admin') || ((userStatus() == 'customer' || userStatus() == 'anonymous')))">
+  <div class="card">
+  <img class="card-img-top" src={{menuItem.image}}>
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <div>
+        <h5>{{menuItem.name}}</h5>
+      </div>
+      <div class="price">Rs.{{menuItem.price}}</div>
+    </div>
+    <div class="d-flex justify-content-between py-2">
+      <div class="category">
+        <span class="badge badge-success" *ngIf="(menuItem.active) && (userStatus() == 'admin')">Active </span> <span
+          class="badge badge-danger" *ngIf="(!menuItem.active) && (userStatus() == 'admin')">Inactive </span>{{menuItem.category}}
+      </div>
+      <div *ngIf="menuItem.freeDelivery">
+        <i class="material-icons">local_shipping</i><span class="badge badge-info">Free</span>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="category">
+        <div *ngIf="(userStatus() == 'admin')">
+          <i class="material-icons">schedule</i>Launch
+        </div>
+        <div *ngIf="(userStatus() == 'admin')">{{menuItem.dateOfLaunch | date : 'dd/MM/yyyy'}}</div>
+      </div>
+      <div>
+        <div *ngIf="(userStatus() == 'customer' || userStatus() == 'anonymous')">
+          <a class="btn btn-danger" (click)="clickAdd()"><i class="material-icons">add_shopping_cart</i>Add to Cart</a>
+        </div>
+        <div *ngIf="(userStatus() == 'admin')">
+          <a class="btn btn-danger" (click)="clickEdit()"><i class="material-icons">create</i>Edit</a>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-success" *ngIf="status== menuItem.id">Item Added Successfully</div>
+  </div>
+</div>
+</div>
+
+

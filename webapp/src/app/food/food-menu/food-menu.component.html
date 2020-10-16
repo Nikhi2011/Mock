@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Menu Item List Admin</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="background">
+			<form>
+				<div class="form-group mt-10 p-5">
+					<app-food-search (searchEmitter)="filterData($event)"></app-food-search>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-sm-12 mt-3 pt-3" *ngFor="let menuItem of filteredFood">
+						<app-food-item [menuItem]="menuItem" [status]="status" [userType]="userType"
+							(editEmitter)="edit($event)" (addEmitter)="add($event)"></app-food-item>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-md bg-danger navbar-dark "><a class="navbar-brand" href="#">Copyright 2019</a></nav>
+</body>
+
+</html>

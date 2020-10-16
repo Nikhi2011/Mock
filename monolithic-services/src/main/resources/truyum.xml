@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+	<bean id="one" class="com.cognizant.truyum.model.MenuItem">
+        <property name="id" value="1" />
+        <property name="name" value="Sandwich"/>
+        <property name="price" value="99"/>
+        <property name="active" value="true"/>  
+            <property name="dateOfLaunch"> 
+        	<bean factory-bean ="dateFormat" factory-method ="parse">
+        		<constructor-arg value ="15/03/2017"/>
+        	</bean>
+        </property>	
+        <property name="category" value="Main Course"/> 
+        <property name="freeDelivery" value="true"/> 
+        <property name="image" value="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1053&amp;q=80"/>  
+	</bean>
+	<bean id="two" class="com.cognizant.truyum.model.MenuItem">
+        <property name="id" value="2" />
+        <property name="name" value="Burger"/>
+        <property name="price" value="129"/>
+        <property name="active" value="true"/>  
+            <property name="dateOfLaunch"> 
+        	<bean factory-bean ="dateFormat" factory-method ="parse">
+        		<constructor-arg value ="23/12/2017"/>
+        	</bean>
+        </property>	
+        <property name="category" value="Main Course"/> 
+        <property name="freeDelivery" value="false"/>  
+        <property name="image" value="https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80"/>
+	</bean>
+    <bean id="three" class="com.cognizant.truyum.model.MenuItem">
+        <property name="id" value="3" />
+        <property name="name" value="Pizza"/>
+        <property name="price" value="149"/>
+        <property name="active" value="true"/>  
+            <property name="dateOfLaunch"> 
+        	<bean factory-bean ="dateFormat" factory-method ="parse">
+        		<constructor-arg value ="21/08/2017"/>
+        	</bean>
+        </property>	
+        <property name="category" value="Main Course"/> 
+        <property name="freeDelivery" value="false"/>  
+        <property name="image" value="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1055&amp;q=80"/>
+    </bean>    
+    <bean id="four" class="com.cognizant.truyum.model.MenuItem">
+        <property name="id" value="4" />
+        <property name="name" value="French Fries"/>
+        <property name="price" value="57"/>
+        <property name="active" value="false"/>  
+            <property name="dateOfLaunch"> 
+        	<bean factory-bean ="dateFormat" factory-method ="parse">
+        		<constructor-arg value ="02/07/2017"/>
+        	</bean>
+        </property>	
+        <property name="category" value="Starters"/> 
+        <property name="freeDelivery" value="true"/>  
+        <property name="image" value="https://images.unsplash.com/photo-1526230427044-d092040d48dc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80"/>
+    </bean>
+    <bean id="five" class="com.cognizant.truyum.model.MenuItem">
+        <property name="id" value="5" />
+        <property name="name" value="Chocolate Browine"/>
+        <property name="price" value="32"/>
+        <property name="active" value="true"/>  
+        <property name="dateOfLaunch"> 
+        	<bean factory-bean ="dateFormat" factory-method ="parse">
+        		<constructor-arg value ="02/11/2022"/>
+        	</bean>
+        </property>		
+        <property name="category" value="Dessert"/> 
+        <property name="freeDelivery" value="true"/>  
+        <property name="image" value="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1030&amp;q=80"/>
+    </bean>
+    
+    	<bean id="menuItemList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="one"></ref>
+                <ref bean="two"></ref>
+                <ref bean="three"></ref>
+                <ref bean="four"></ref>
+                <ref bean="five"></ref>
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+    	<constructor-arg value ="dd/MM/yyyy"/>
+    </bean>
+    
+   </beans> 

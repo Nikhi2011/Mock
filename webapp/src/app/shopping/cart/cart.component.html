@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Cart</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-6 margin-tops">
+				<h3>Cart</h3>
+				<div *ngIf="error == 'Cart is Empty'">
+					<div class="row">
+						<div class="col-12">
+							<div class="cart-empty-color p-3">
+								<h4>No Items in Cart. Use 'Add to Cart'
+									option in menu item list.</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="!(error == 'Cart is Empty')">
+					<ul class="list-group">
+						<div class="alert alert-danger" *ngIf="status == 1">Item Deleted Successfully</div>
+						<li class="list-group-item" *ngFor="let cart of cart">
+							<div class="d-flex justify-content-between">
+								<div>
+									<h5 class="category">{{cart.name}}</h5>
+								</div>
+								<div class="d-flex justify-content-between">
+									<div class="price">Rs.{{cart.price}}</div>
+									<div>
+										<button class="btn" (click)="delete(cart)"><i
+												class="material-icons category">delete_forever</i></button>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="d-flex justify-content-between">
+								<div>
+									<h4>Total</h4>
+								</div>
+								<div class="price">
+									<h6>Rs.{{total}}</h6>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-md bg-danger navbar-dark mt-5">
+		<a class="navbar-brand" href="#">Copyright 2019</a>
+	</nav>
+</body>
+
+</html>
